@@ -1,13 +1,19 @@
-Conceito e definição: O que é esse estilo arquiterual e como ele funciona na prática?
+Conceito e definição: O que é esse estilo arquitetural e como ele funciona na prática?
 
-Monolítico: É uma aplicação feita em um "arquivo só" ou seja toda lógica do sistema vive dentro de uma única unidade de código compilada e testada com um bloco só, ou seja não precisa de um servidor ele roda na sua maquina
+Monolítico: É uma aplicação onde as principais partes do sistema ficam dentro de uma única aplicação. Mesmo tendo vários arquivos, o sistema funciona como uma unidade só. Quando precisa atualizar, normalmente é necessário atualizar o sistema inteiro.
 
+Casos de uso comuns: Em quais tipos de sistemas, problemas ou cenários esse estilo é recomendado/utilizado pelo mercado? Cite ao menos 2 exemplos reais ou práticos.
 
-Casos de uso comuns: Em quais tipos de sistemas, problemas ou cenários esse estilo é recomendado/utlizados pelo mercado? cite ao menos 2 exempls reais ou praticos
-principais vantagens: Quais são os maiores beneficios ao adotar esse estilo?(ex: facilidade de imolantação, desempenho, escalabilidade, etc.)
+É mais usado em sistemas menores ou com regras de negócio mais simples.
 
-Um exemplo pratico q pode ser usado é um ecoomerce tipo um cadastro de mecanica que é apenas usado para quela mecanica, ou seja vai funcionar apenas com as regras de negocios da quela empresa muito mais simples rapido e facil de resolver bugs ou atualizar basta baixar e rodar no desktop
+Um exemplo é um sistema de cadastro de uma mecânica, usado apenas pelos funcionários daquela empresa, funcionando de acordo com as regras daquela empresa.
 
-Principais desvantagnes: Quais são os gargalos, limitações ou desafios de manutenção/desenvolvimento associados a ele?
+Outro exemplo é um sistema interno de uma pequena empresa para controlar estoque, clientes e vendas.
 
-As principais desvatagens são: As principais são quando você quer trazer aquele sistemas para mais pessoas sendo monolitico você precisa compactar tudo do sistema em um arquivo só ficando pesado e simples com menos falta de atualização e correções.
+Principais vantagens: Quais são os maiores benefícios ao adotar esse estilo?
+
+A principal vantagem é a simplicidade. É mais fácil desenvolver, instalar, testar e corrigir bugs. Também pode ter um bom desempenho em sistemas menores e é mais simples de atualizar.
+
+Principais desvantagens: Quais são os gargalos, limitações ou desafios de manutenção/desenvolvimento associados a ele?
+
+A principal desvantagem aparece quando o sistema cresce muito. Uma alteração em uma parte pode exigir a atualização do sistema inteiro. Além disso, o código pode ficar mais difícil de organizar e manter, e fica mais complicado escalar apenas uma parte do sistema.
