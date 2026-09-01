@@ -1,0 +1,10 @@
+flowchart LR
+    Seller(["Vendedor<br>Registra pedidos realizados por telefone ou presencialmente"])
+    Admin(["Administrador<br>Gerencia os produtos disponíveis para venda"])
+    Stock(["Time de Estoque<br>Controla entradas e saídas dos produtos"])
+
+    System["Sistema de Vendas e Estoque"]
+
+    Seller -->|registra pedidos| System
+    Admin -->|cadastra e remove produtos| System
+    Stock -->|controla quantidade, entradas e saídas| System

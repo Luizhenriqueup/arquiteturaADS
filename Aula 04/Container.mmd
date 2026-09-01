@@ -1,0 +1,17 @@
+flowchart TD
+    Seller(["Vendedor"])
+    Admin(["Administrador"])
+    Stock(["Time de Estoque"])
+
+    subgraph System["Sistema de Vendas e Estoque"]
+        App["Aplicação Web"]
+        Server["API"]
+        DB[("Banco de Dados")]
+    end
+
+    Seller -->|registra pedidos| App
+    Admin -->|gerencia produtos| App
+    Stock -->|controla estoque| App
+
+    App -->|chama API| Server
+    Server -->|lê e grava| DB
