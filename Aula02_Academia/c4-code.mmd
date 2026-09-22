@@ -1,0 +1,91 @@
+classDiagram
+
+    class Aluno {
+        -Long id
+        -String nome
+        -String email
+        -String telefone
+        -Plano plano
+        +cadastrar()
+        +atualizar()
+        +consultar()
+    }
+
+    class Professor {
+        -Long id
+        -String nome
+        -String especialidade
+        +cadastrarTreino()
+        +acompanharAluno()
+    }
+
+    class Plano {
+        -Long id
+        -String nome
+        -double valor
+        -int duracao
+        +criar()
+        +atualizar()
+        +remover()
+    }
+
+    class Treino {
+        -Long id
+        -String nome
+        -Aluno aluno
+        -Professor professor
+        -List~String~ exercicios
+        +criar()
+        +atualizar()
+        +finalizar()
+    }
+
+    class AlunoRepository {
+        +save(Aluno)
+        +findById(Long)
+        +findAll()
+        +delete(Aluno)
+    }
+
+    class TreinoRepository {
+        +save(Treino)
+        +findById(Long)
+        +findAll()
+        +delete(Treino)
+    }
+
+    class PlanoRepository {
+        +save(Plano)
+        +findById(Long)
+        +findAll()
+        +delete(Plano)
+    }
+
+    class AlunoService {
+        +cadastrarAluno()
+        +atualizarAluno()
+        +buscarAluno()
+    }
+
+    class TreinoService {
+        +criarTreino()
+        +atualizarTreino()
+        +finalizarTreino()
+    }
+
+    class PlanoService {
+        +criarPlano()
+        +atualizarPlano()
+        +removerPlano()
+    }
+
+    Aluno "1" --> "1" Plano : possui
+    Aluno "1" --> "*" Treino : possui
+    Professor "1" --> "*" Treino : cria
+
+    AlunoService --> AlunoRepository : utiliza
+    TreinoService --> TreinoRepository : utiliza
+    PlanoService --> PlanoRepository : utiliza
+
+    TreinoService --> AlunoService : consulta aluno
+    TreinoService --> PlanoService : consulta plano

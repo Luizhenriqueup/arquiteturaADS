@@ -1,0 +1,42 @@
+C4Component
+title Diagrama de Componentes - API do Sistema de Academia
+
+Container_Boundary(api, "API - Sistema de Academia") {
+
+    Component(alunoController, "Aluno Controller", "Spring MVC", "Recebe requisições relacionadas aos alunos.")
+
+    Component(alunoService, "Aluno Service", "Spring Service", "Contém as regras de negócio dos alunos.")
+
+    Component(treinoController, "Treino Controller", "Spring MVC", "Recebe requisições relacionadas aos treinos.")
+
+    Component(treinoService, "Treino Service", "Spring Service", "Contém as regras de negócio dos treinos.")
+
+    Component(planoService, "Plano Service", "Spring Service", "Gerencia os planos da academia.")
+
+    Component(notificationService, "Notification Service", "Spring Service", "Responsável pelo envio de notificações.")
+
+    Component(alunoRepository, "Aluno Repository", "Spring Data JPA", "Acessa os dados dos alunos.")
+
+    Component(treinoRepository, "Treino Repository", "Spring Data JPA", "Acessa os dados dos treinos.")
+
+    Component(planoRepository, "Plano Repository", "Spring Data JPA", "Acessa os dados dos planos.")
+}
+
+ContainerDb(database, "Banco de Dados", "PostgreSQL")
+System_Ext(email, "Serviço de E-mail", "Serviço externo")
+
+Rel(alunoController, alunoService, "Utiliza")
+Rel(treinoController, treinoService, "Utiliza")
+
+Rel(alunoService, alunoRepository, "Utiliza")
+Rel(treinoService, treinoRepository, "Utiliza")
+Rel(planoService, planoRepository, "Utiliza")
+
+Rel(notificationService, email, "Envia notificações")
+
+Rel(alunoRepository, database, "Consulta dados")
+Rel(treinoRepository, database, "Consulta dados")
+Rel(planoRepository, database, "Consulta dados")
+
+Rel(treinoService, alunoService, "Consulta aluno")
+Rel(treinoService, planoService, "Consulta plano")

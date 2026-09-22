@@ -1,0 +1,29 @@
+C4Container
+title Diagrama de Contêineres - Sistema de Academia
+
+Person(aluno, "Aluno")
+Person(professor, "Professor")
+Person(admin, "Administrador")
+
+System_Boundary(academia, "Sistema de Academia") {
+
+    Container(app, "Aplicativo do Aluno", "React / Mobile", "Permite ao aluno consultar seus treinos e planos.")
+
+    Container(adminWeb, "Sistema Administrativo", "HTML / CSS / JavaScript", "Permite aos funcionários gerenciar alunos, professores e planos.")
+
+    Container(api, "API", "Java / Spring Boot", "Responsável pelas regras de negócio e comunicação entre o sistema e o banco de dados.")
+
+    ContainerDb(database, "Banco de Dados", "PostgreSQL", "Armazena alunos, professores, treinos e planos.")
+}
+
+System_Ext(email, "Serviço de E-mail", "Serviço externo para envio de notificações.")
+
+Rel(aluno, app, "Utiliza")
+Rel(professor, adminWeb, "Utiliza")
+Rel(admin, adminWeb, "Utiliza")
+
+Rel(app, api, "Faz requisições", "HTTPS/JSON")
+Rel(adminWeb, api, "Faz requisições", "HTTPS/JSON")
+
+Rel(api, database, "Lê e grava dados", "SQL")
+Rel(api, email, "Envia notificações", "SMTP/API")

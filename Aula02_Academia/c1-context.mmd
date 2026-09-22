@@ -1,0 +1,15 @@
+C4Context
+title Diagrama de Contexto - Sistema de Academia
+
+Person(aluno, "Aluno", "Utiliza o sistema para consultar seus treinos e planos.")
+Person(professor, "Professor", "Cadastra e acompanha os treinos dos alunos.")
+Person(admin, "Administrador", "Gerencia alunos, professores e planos.")
+
+System(academia, "Sistema de Academia", "Sistema responsável pelo gerenciamento da academia, alunos, treinos e planos.")
+
+System_Ext(email, "Serviço de E-mail", "Serviço utilizado para enviar notificações.")
+
+Rel(aluno, academia, "Consulta treinos e planos")
+Rel(professor, academia, "Cadastra e acompanha treinos")
+Rel(admin, academia, "Gerencia alunos, professores e planos")
+Rel(academia, email, "Envia notificações")
