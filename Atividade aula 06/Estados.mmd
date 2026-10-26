@@ -1,0 +1,15 @@
+stateDiagram-v2
+    [*] --> INDISPONIVEL: criarProduto()
+
+    INDISPONIVEL --> DISPONIVEL: acrescerEstoque() [estoque > 0]
+    DISPONIVEL --> INDISPONIVEL: baixarEstoque() [estoque == 0]
+
+    DISPONIVEL --> DESCONTINUADO: descontinuar() [administrador]
+    INDISPONIVEL --> DESCONTINUADO: descontinuar() [administrador]
+
+    DISPONIVEL --> DISPONIVEL: acrescerEstoque() / attEstoque()
+    DISPONIVEL --> DISPONIVEL: baixarEstoque() [estoque > 0] / attEstoque()
+    INDISPONIVEL --> INDISPONIVEL: baixarEstoque() [estoque == 0]
+
+    DESCONTINUADO --> DESCONTINUADO: entradaEstoque() / bloquear()
+    DESCONTINUADO --> DESCONTINUADO: baixarEstoque() / bloquear()
