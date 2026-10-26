@@ -1,0 +1,18 @@
+flowchart TD
+    Inicio(( )) --> A[Recebe produto e quantidade]
+    A --> B{Produto descontinuado?}
+    B -- [sim] --> C[Devolve erro]
+    B -- [não] --> D{Entrada de estoque?}
+    D -- [sim] --> E[Acrescenta estoque]
+    D -- [não] --> F{Tem estoque suficiente?}
+    F -- [não] --> G[Devolve erro]
+    F -- [sim] --> H[Baixa estoque]
+    H --> I{Estoque igual a zero?}
+    I -- [sim] --> J[Define INDISPONÍVEL]
+    I -- [não] --> K[Mantém DISPONÍVEL]
+    E --> L[Salva produto]
+    J --> L
+    K --> L
+    L --> Fim(( ))
+    C --> Fim
+    G --> Fim
