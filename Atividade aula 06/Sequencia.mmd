@@ -1,0 +1,29 @@
+sequenceDiagram
+    actor Usuário
+    participant Controller as EstoqueController
+    participant Service as EstoqueService
+    participant Repository as EstoqueRepository
+
+    Usuário->>Controller: POST /estoque/entrada
+    Controller->>Service: entrada(produto, quantidade)
+    Service->>Repository: findById(produto)
+    Repository-->>Service: Produto
+    Service->>Repository: save(produto)
+    Repository-->>Service: Produto atualizado
+    Service-->>Controller: Produto
+    Controller-->>Usuário: redirect /estoque
+
+    Usuário->>Controller: POST /estoque/saida
+    Controller->>Service: saida(produto, quantidade)
+    Service->>Repository: findById(produto)
+    Repository-->>Service: Produto
+    alt Produto descontinuado
+        Service-->>Controller: Erro: produto descontinuado
+    else Estoque insuficiente
+        Service-->>Controller: Erro: estoque insuficiente
+    else Saída permitida
+        Service->>Repository: save(produto atualizado)
+        Repository-->>Service: Produto atualizado
+        Service-->>Controller: Produto
+    end
+    Controller-->>Usuário: redirect /estoque
